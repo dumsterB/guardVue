@@ -1,0 +1,14 @@
+const roles = {
+   1: {
+     routes: ["Home", "Settings", "Banlist"],
+   }, // admin
+
+   2: {
+     routes: ["Home", "Banlist"],
+   }, // moderator
+    
+   3: {
+     routes: ["Banlist"],
+   }, // user
+}
+

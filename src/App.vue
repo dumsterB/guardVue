@@ -1,28 +1,41 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar app color="primary" dark>
+      <v-toolbar-title>Title</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn v-for="link in links"    depressed
+      color="primary" :key="link.key" :to="link.path">{{link.title}}</v-btn>
+      <!-- <v-btn    depressed
+      color="primary" to="/login" >login</v-btn> -->
+
+    </v-app-bar>
+    <v-main>
+      <router-view />
+      <br>
+      <v-btn to="/home">home</v-btn>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  name: "App",
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  data: () => ({
+
+  }),
+  computed:{
+    links(){
+    return  this.$store.state.links
+
+  },
+
+  },
+  mounted(){
+    this.$router.replace({
+      name:'Login'
+    }).catch(()=>{})
+  }
+};
+</script>
